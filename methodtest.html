@@ -1,23 +1,49 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <style>
+            *{
+                margin:0.2em;
+            }
+        </style>
+        <meta charset="UTF-8">
     </head>
     <body>
-        <form>
-            <label for="record_id">id: </label>
-            <input type="text" name="record_id" id="record_id">
+        <form id="my_form">
+            <label for="id">id: </label>
+            <input type="text" name="id" id="record_id">
+            <br>
             <label for="article_name">article name: </label>
             <input type="text" name="article_name" id="article_name">
-            <textarea id="text_body"></textarea>
+            <br>
+            <label for="article_body">article body: </label>
+            <br>
+            <textarea id="article_body" name="article_body"></textarea>
+            <br>
+            <input id="date" name="date" readonly hidden></input>
+            <br>
+
         </form>
-        <p id="date"></p>
-        <output id="response"></output>
-        <div id="button-group">
-            <button id="postBtn">post</button>
-            <button id="getBtn">get</button>
-            <button id="putBtn">put</button>
-            <button id="deleteBtn">delete</button>
-        </div>
+        <button id="postBtn">post</button>
+        <button id="getBtn">get</button>
+        <button id="putBtn">put</button>
+        <button id="deleteBtn">delete</button>
+        <fieldset>
+            <output id="response">
+                <pre id="output"></pre>
+            </output>
+        </fieldset>
+
+
+        <script type="module">
+            import {init} from "/methodtest.js";
+            const formEl = document.getElementById("my_form");
+            const postBtnEl = document.getElementById("postBtn");
+            const getBtnEl = document.getElementById("getBtn");
+            const putBtnEl = document.getElementById("putBtn");
+            const deleteBtnEl = document.getElementById("deleteBtn");
+            const outputEl = document.getElementById('output');
+            init(formEl, postBtnEl, getBtnEl, putBtnEl, deleteBtnEl, outputEl);
+        </script>
     </body>
 </html>
